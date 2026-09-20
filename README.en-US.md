@@ -10,6 +10,7 @@ Code Snippet Input is a Windows text input tool for code snippets. It appears in
 - Show matching snippets in a vertical candidate list as an abbreviation is typed.
 - Provide a draggable, fixed toolbar for changing the active Context and opening the manager.
 - Create, rename, enable, disable, and delete Contexts and templates.
+- Select or clear all templates at once; toggling a Context also toggles every child template.
 - Import and export the application's JSON configuration.
 - Import IntelliJ IDEA Live Templates XML files or ZIP archives.
 - Export one XML file per Context inside a ZIP archive.

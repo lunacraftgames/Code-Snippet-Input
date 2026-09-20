@@ -19,6 +19,10 @@
   <sys:String x:Key="ButtonExportTemplates">Export template ZIP</sys:String>
   <sys:String x:Key="LabelCurrentContext">Active Context</sys:String>
   <sys:String x:Key="TreeTitle">Contexts and templates</sys:String>
+  <sys:String x:Key="ButtonSelectAll">Select all</sys:String>
+  <sys:String x:Key="ButtonSelectNone">Select none</sys:String>
+  <sys:String x:Key="TooltipSelectAll">Enable every template in every Context</sys:String>
+  <sys:String x:Key="TooltipSelectNone">Disable every template in every Context</sys:String>
   <sys:String x:Key="TooltipToggleContext">Enable or disable every template in this Context</sys:String>
   <sys:String x:Key="TooltipRenameContext">Edit the Context name directly</sys:String>
   <sys:String x:Key="ButtonDelete">Delete</sys:String>
@@ -57,6 +61,8 @@
   <sys:String x:Key="NewTemplateDescription">New template</sys:String>
   <sys:String x:Key="NewContextName">New Context</sys:String>
   <sys:String x:Key="StatusTemplateCreated">Created a template in {0}.</sys:String>
+  <sys:String x:Key="StatusAllTemplatesEnabled">Enabled all {0} templates. Click Save to write the configuration.</sys:String>
+  <sys:String x:Key="StatusAllTemplatesDisabled">Disabled all {0} templates. Click Save to write the configuration.</sys:String>
   <sys:String x:Key="StatusTemplateDeleted">Deleted template {0}. Click Save to write the configuration.</sys:String>
   <sys:String x:Key="StatusSaved">Saved {0} templates and {1} Contexts.</sys:String>
   <sys:String x:Key="ErrorSave">Save failed: {0}</sys:String>

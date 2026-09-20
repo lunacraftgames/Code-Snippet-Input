@@ -48,7 +48,19 @@
 
       <Border Grid.Column="0" BorderBrush="#FFD0D5DD" BorderThickness="1" CornerRadius="4" Padding="4">
         <DockPanel>
-          <TextBlock DockPanel.Dock="Top" Text="{DynamicResource TreeTitle}" FontWeight="SemiBold" FontSize="15" Margin="8,6,8,8" />
+          <Grid DockPanel.Dock="Top" Margin="8,6,8,8">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="{DynamicResource TreeTitle}" FontWeight="SemiBold" FontSize="15"
+                       VerticalAlignment="Center" />
+            <Button Grid.Column="1" Content="{DynamicResource ButtonSelectAll}" Click="SelectAll_Click"
+                    Margin="8,0,4,0" Padding="8,3" ToolTip="{DynamicResource TooltipSelectAll}" />
+            <Button Grid.Column="2" Content="{DynamicResource ButtonSelectNone}" Click="SelectNone_Click"
+                    Margin="0" Padding="8,3" ToolTip="{DynamicResource TooltipSelectNone}" />
+          </Grid>
           <TreeView x:Name="TemplateTree" ItemsSource="{Binding ContextGroups}"
                     SelectedItemChanged="TemplateTree_SelectedItemChanged" BorderThickness="0">
             <TreeView.ItemContainerStyle>

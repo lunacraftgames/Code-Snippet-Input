@@ -1,0 +1,85 @@
+# .NET / WPF build output
+**/bin/
+**/obj/
+TestResults/
+artifacts/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet
+packages/
+*.nupkg
+*.snupkg
+
+# Visual Studio and MSBuild
+.vs/
+ipch/
+*.VC.db
+*.VC.opendb
+*.opendb
+*.sdf
+*.cachefile
+*.tlog
+*.lastbuildstate
+*.recipe
+*.ilk
+*.iobj
+*.ipdb
+*.obj
+*.pch
+*.res
+
+# CMake generated files and out-of-source builds
+/build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+install_manifest.txt
+Makefile
+CMakeUserPresets.json
+
+# Local publish/staging output
+/publish/
+/CodeSnippetInput-Portable-win-x64/
+/CodeSnippetInput-Portable-win-x64.zip
+
+# IDE/editor settings
+.idea/
+.vscode/
+*.code-workspace
+*.DotSettings.user
+
+# Test coverage and diagnostics
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+*.trx
+*.log
+*.dmp
+
+# Temporary and backup files
+*.tmp
+*.temp
+*.bak
+*.old
+*.orig
+*.rej
+*~
+~$*
+
+# OS metadata
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Local Codex/agent workspace metadata
+.codex/
+.agents/
+
+# Release ZIP files in /releases and sample ZIP files in /template examples
+# are intentionally kept eligible for version control.

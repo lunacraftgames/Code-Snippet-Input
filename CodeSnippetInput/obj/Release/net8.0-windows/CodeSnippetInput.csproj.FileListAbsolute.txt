@@ -24,3 +24,4 @@ C:\Users\d11yu\个人文件夹\IT\code snippet输入法\CodeSnippetInput\obj\Rel
 C:\Users\d11yu\个人文件夹\IT\code snippet输入法\CodeSnippetInput\obj\Release\net8.0-windows\ToolbarWindow.g.cs
 C:\Users\d11yu\个人文件夹\IT\code snippet输入法\CodeSnippetInput\obj\Release\net8.0-windows\Resources\Strings.en-US.baml
 C:\Users\d11yu\个人文件夹\IT\code snippet输入法\CodeSnippetInput\obj\Release\net8.0-windows\Resources\Strings.zh-CN.baml
+C:\Users\d11yu\个人文件夹\IT\code snippet输入法\CodeSnippetInput\obj\Release\net8.0-windows\CodeSnippetInput.sourcelink.json

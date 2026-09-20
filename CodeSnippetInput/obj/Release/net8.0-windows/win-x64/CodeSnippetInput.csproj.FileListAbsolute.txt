@@ -484,3 +484,4 @@ C:\Users\d11yu\个人文件夹\IT\code snippet输入法\CodeSnippetInput\bin\Rel
 C:\Users\d11yu\个人文件夹\IT\code snippet输入法\CodeSnippetInput\obj\Release\net8.0-windows\win-x64\Resources\Strings.en-US.baml
 C:\Users\d11yu\个人文件夹\IT\code snippet输入法\CodeSnippetInput\obj\Release\net8.0-windows\win-x64\Resources\Strings.zh-CN.baml
 C:\Users\d11yu\个人文件夹\IT\code snippet输入法\CodeSnippetInput\obj\Release\net8.0-windows\win-x64\CodeSnippetInput.pdb
+C:\Users\d11yu\个人文件夹\IT\code snippet输入法\CodeSnippetInput\obj\Release\net8.0-windows\win-x64\CodeSnippetInput.sourcelink.json

@@ -19,6 +19,10 @@
   <sys:String x:Key="ButtonExportTemplates">导出模板 ZIP</sys:String>
   <sys:String x:Key="LabelCurrentContext">当前 Context</sys:String>
   <sys:String x:Key="TreeTitle">Contexts 与模板</sys:String>
+  <sys:String x:Key="ButtonSelectAll">全选</sys:String>
+  <sys:String x:Key="ButtonSelectNone">全不选</sys:String>
+  <sys:String x:Key="TooltipSelectAll">启用全部 Context 中的所有模板</sys:String>
+  <sys:String x:Key="TooltipSelectNone">停用全部 Context 中的所有模板</sys:String>
   <sys:String x:Key="TooltipToggleContext">启用或停用该 Context 下的全部模板</sys:String>
   <sys:String x:Key="TooltipRenameContext">可直接修改 Context 名称</sys:String>
   <sys:String x:Key="ButtonDelete">删除</sys:String>
@@ -57,6 +61,8 @@
   <sys:String x:Key="NewTemplateDescription">新模板</sys:String>
   <sys:String x:Key="NewContextName">新 Context</sys:String>
   <sys:String x:Key="StatusTemplateCreated">已在 {0} 中新建模板。</sys:String>
+  <sys:String x:Key="StatusAllTemplatesEnabled">已启用全部 {0} 个模板。点击保存以写入配置。</sys:String>
+  <sys:String x:Key="StatusAllTemplatesDisabled">已停用全部 {0} 个模板。点击保存以写入配置。</sys:String>
   <sys:String x:Key="StatusTemplateDeleted">已删除模板 {0}。点击保存以写入配置。</sys:String>
   <sys:String x:Key="StatusSaved">已保存 {0} 个模板和 {1} 个 Context。</sys:String>
   <sys:String x:Key="ErrorSave">保存失败：{0}</sys:String>

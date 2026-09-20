@@ -46,13 +46,15 @@ public sealed class ContextGroupViewModel : INotifyPropertyChanged, IDisposable
         }
         set
         {
-            if (value is null) return;
-            foreach (var template in Templates) template.IsEnabled = value.Value;
+            var enabled = value == true;
+            foreach (var template in Templates) template.IsEnabled = enabled;
             OnPropertyChanged(nameof(IsEnabled));
         }
     }
 
     public int Count => Templates.Count;
+
+    public void NotifyEnabledStateChanged() => OnPropertyChanged(nameof(IsEnabled));
 
     private void Template_PropertyChanged(object? sender, PropertyChangedEventArgs e)
     {

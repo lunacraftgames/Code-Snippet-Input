@@ -249,6 +249,24 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         StatusText = LF("StatusTemplateCreated", context);
     }
 
+    private void SelectAll_Click(object sender, RoutedEventArgs e)
+    {
+        SetAllTemplatesEnabled(true);
+        StatusText = LF("StatusAllTemplatesEnabled", Templates.Count);
+    }
+
+    private void SelectNone_Click(object sender, RoutedEventArgs e)
+    {
+        SetAllTemplatesEnabled(false);
+        StatusText = LF("StatusAllTemplatesDisabled", Templates.Count);
+    }
+
+    private void SetAllTemplatesEnabled(bool enabled)
+    {
+        foreach (var template in Templates) template.IsEnabled = enabled;
+        foreach (var group in ContextGroups) group.NotifyEnabledStateChanged();
+    }
+
     private void DeleteTemplate_Click(object sender, RoutedEventArgs e)
     {
         if (SelectedTemplate is null) return;
