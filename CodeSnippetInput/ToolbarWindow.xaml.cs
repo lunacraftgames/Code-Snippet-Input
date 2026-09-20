@@ -113,8 +113,6 @@ public partial class ToolbarWindow : Window
         if (e.LeftButton == MouseButtonState.Pressed) DragMove();
     }
 
-    private void Close_Click(object sender, RoutedEventArgs e) => Application.Current.Shutdown();
-
     private void Window_Closed(object? sender, EventArgs e)
     {
         _refreshTimer.Stop();

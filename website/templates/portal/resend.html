@@ -1,0 +1,7 @@
+{% extends "portal/form_page.html" %}
+{% block title %}重新发送验证邮件 · CodeSnippetInput{% endblock %}
+{% block form_heading %}重新发送验证邮件{% endblock %}
+{% block form_content %}
+<p class="form-intro">输入注册邮箱。如果账号尚未激活，我们会重新发送验证链接。</p>
+<form method="post" class="stack-form">{% csrf_token %}<label>邮箱<input type="email" name="email" required autocomplete="email"></label><button class="button primary full" type="submit">发送验证邮件</button></form>
+{% endblock %}

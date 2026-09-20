@@ -60,7 +60,7 @@ The first launch follows the Windows display language: Chinese Windows uses Simp
 | --- | --- |
 | `Up` / `Down` | Move the selection |
 | `1`–`8` | Select a candidate by number |
-| `Space` / `Enter` / `Tab` | Insert the selected candidate |
+| `Tab` | Insert the selected candidate |
 | Left mouse button | Click a candidate to insert it |
 | `Esc` | Close the candidate list |
 
@@ -70,10 +70,12 @@ Up to eight candidates are shown. The list is filtered by the Context selected o
 
 The fixed toolbar is visible only while Code Snippet Input is active. It hides automatically when another input method is selected.
 
+Switching back from another input method shows the toolbar automatically. A single-instance guard prevents duplicate toolbars.
+
 - Drag the logo to move the toolbar.
 - Use the Context list to select the active template group.
 - Click **Manager** to open the template manager.
-- The close button exits the toolbar. It starts again at the next Windows sign-in or when the input method is reinstalled.
+- The toolbar has no close button. It hides automatically when another input method is selected.
 
 ## Managing Contexts and templates
 
@@ -130,7 +132,7 @@ The portable package does not contain personal configuration. Use JSON or ZIP ex
 ## Updating
 
 1. Save and close the manager.
-2. Close the fixed toolbar.
+2. End `CodeSnippetInput.exe` in Task Manager only when an old running file must be replaced.
 3. Extract the new version to a permanent folder.
 4. Run the new `install-input-method.bat`.
 5. Restart Windows so applications release the old input-method DLL.

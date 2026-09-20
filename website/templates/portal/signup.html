@@ -1,0 +1,15 @@
+{% extends "portal/form_page.html" %}
+{% block title %}注册 · CodeSnippetInput{% endblock %}
+{% block form_heading %}创建账号{% endblock %}
+{% block form_content %}
+<p class="form-intro">注册后可保存自己的 XML 和 ZIP 模板。我们会发送一封验证邮件。</p>
+<form method="post" class="stack-form">
+  {% csrf_token %}
+  {% for field in form %}
+    <label>{{ field.label }}{{ field }}{% for error in field.errors %}<small class="field-error">{{ error }}</small>{% endfor %}</label>
+  {% endfor %}
+  {% for error in form.non_field_errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+  <button class="button primary full" type="submit">创建账号</button>
+</form>
+<p class="form-foot">已有账号？<a href="{% url 'portal:login' %}">登录</a></p>
+{% endblock %}

@@ -1,0 +1,3 @@
+{% extends "portal/base.html" %}
+{% block title %}请求已处理 · CodeSnippetInput{% endblock %}
+{% block content %}<section class="state-card"><div class="state-icon">✓</div><h1>请求已处理</h1><p>如果该邮箱对应尚未激活的账号，验证邮件将很快到达。</p><a class="button secondary" href="{% url 'portal:login' %}">返回登录</a></section>{% endblock %}

@@ -3,7 +3,7 @@ setlocal
 
 set "PROJECT_ROOT=%~dp0"
 set "UNINSTALL_SCRIPT=%PROJECT_ROOT%CodeSnippetInputTsf\uninstall-input-method.ps1"
-set "TSF_DLL=%PROJECT_ROOT%publish\tsf-x64-literal\CodeSnippetInputTsf.dll"
+set "TSF_DLL=%PROJECT_ROOT%publish\tsf-x64\CodeSnippetInputTsf.dll"
 
 if not exist "%UNINSTALL_SCRIPT%" (
     echo ERROR: Uninstaller script was not found:

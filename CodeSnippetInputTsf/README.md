@@ -63,7 +63,7 @@ uninstall-input-method.bat
 ```
 
 两个批处理文件通过 `%~dp0` 定位项目根目录，因此不要求先切换 PowerShell 或 CMD 的工作目录。
-当前脚本安装 `publish\tsf-x64-literal\CodeSnippetInputTsf.dll`，悬浮栏与管理器位于 `publish\manager-context\CodeSnippetInput.exe`。
+当前脚本安装 `publish\tsf-x64\CodeSnippetInputTsf.dll`，悬浮栏与管理器位于 `publish\manager-context\CodeSnippetInput.exe`。
 
 注册脚本会自动请求管理员权限，将 COM/TSF 配置写入 Windows 的标准系统输入法注册位置。若列表没有立刻刷新，注销并重新登录后再按 `Win + 空格`。
 

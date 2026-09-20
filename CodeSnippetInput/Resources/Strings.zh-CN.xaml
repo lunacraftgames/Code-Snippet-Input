@@ -36,13 +36,12 @@
   <sys:String x:Key="LabelVariables">变量定义（仅用于配置导入/导出；正文中的 $变量$ 会原样输出）</sys:String>
   <sys:String x:Key="LabelTemplateContexts">模板适用范围（逗号分隔，区别于上方可切换的 Context）</sys:String>
   <sys:String x:Key="HelpCandidatesTitle">输入法候选</sys:String>
-  <sys:String x:Key="HelpCandidatesText">输入法悬浮栏可切换当前 Context。输入触发词前缀后会纵向显示该 Context 中匹配的模板；可用方向键、数字键、Space、Enter、Tab 或鼠标选择。</sys:String>
+  <sys:String x:Key="HelpCandidatesText">输入法悬浮栏可切换当前 Context。输入触发词前缀后会纵向显示该 Context 中匹配的模板；可用方向键移动，使用数字键、Tab 或鼠标选择。</sys:String>
   <sys:String x:Key="HelpLiteralDollarText">模板正文中的 $...$ 内容会连同两侧的 $ 符号原样输出，不执行变量替换。</sys:String>
   <sys:String x:Key="HelpExportText">导出模板 ZIP 时，每个 Context 会生成一个独立 XML；模板内部的适用范围仍写入 &lt;context&gt; 节点。</sys:String>
   <sys:String x:Key="ToolbarDragTooltip">拖动悬浮栏</sys:String>
   <sys:String x:Key="ToolbarManager">管理器</sys:String>
   <sys:String x:Key="ToolbarManagerTooltip">打开 Code Snippet 管理器</sys:String>
-  <sys:String x:Key="ToolbarCloseTooltip">关闭悬浮栏</sys:String>
   <sys:String x:Key="StatusLoading">正在加载模板…</sys:String>
   <sys:String x:Key="StatusLanguageChanged">界面语言已切换为简体中文。</sys:String>
   <sys:String x:Key="StatusAllContexts">输入法已切换到全部 Context。</sys:String>

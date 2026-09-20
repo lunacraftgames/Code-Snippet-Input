@@ -81,5 +81,14 @@ Desktop.ini
 .codex/
 .agents/
 
-# Release ZIP files in /releases and sample ZIP files in /template examples
-# are intentionally kept eligible for version control.
+# Website deployment secrets and runtime data
+/website/.env
+/website/data/
+/website/release/*
+!/website/release/.gitkeep
+
+# Release archives are published through GitHub Releases, not committed.
+/releases/*
+!/releases/.gitkeep
+
+# Sample archives in /template examples remain eligible for version control.

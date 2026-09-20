@@ -2,8 +2,8 @@
 setlocal
 
 set "PUBLISH_ROOT=%~dp0publish"
-set "CURRENT_DLL=%PUBLISH_ROOT%\tsf-x64-literal\CodeSnippetInputTsf.dll"
-set "OLD_DLL=%PUBLISH_ROOT%\tsf-x64\CodeSnippetInputTsf.dll"
+set "CURRENT_DLL=%PUBLISH_ROOT%\tsf-x64\CodeSnippetInputTsf.dll"
+set "OLD_DLL=%PUBLISH_ROOT%\tsf-x64-literal\CodeSnippetInputTsf.dll"
 
 if not exist "%CURRENT_DLL%" (
     echo ERROR: The current input-method DLL was not found:
@@ -22,7 +22,7 @@ if errorlevel 1 (
     exit /b 3
 )
 
-for %%D in ("manager-live" "tsf-x64" "tsf-x64-live" "tsf-x64-v2" "tsf-x64-context" "tsf-x64-state") do (
+for %%D in ("manager-live" "tsf-x64-live" "tsf-x64-v2" "tsf-x64-context" "tsf-x64-state") do (
     if exist "%PUBLISH_ROOT%\%%~D" rmdir /s /q "%PUBLISH_ROOT%\%%~D" >nul 2>&1
 )
 

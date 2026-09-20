@@ -36,13 +36,12 @@
   <sys:String x:Key="LabelVariables">Variable metadata (import/export only; $variables$ in the body are inserted literally)</sys:String>
   <sys:String x:Key="LabelTemplateContexts">Template applicability contexts (comma-separated; separate from the switchable Context above)</sys:String>
   <sys:String x:Key="HelpCandidatesTitle">IME candidates</sys:String>
-  <sys:String x:Key="HelpCandidatesText">Use the IME toolbar to switch the active Context. Typing an abbreviation prefix shows matching templates vertically; use arrow keys, number keys, Space, Enter, Tab, or the mouse to choose one.</sys:String>
+  <sys:String x:Key="HelpCandidatesText">Use the IME toolbar to switch the active Context. Typing an abbreviation prefix shows matching templates vertically; move with the arrow keys and choose with a number key, Tab, or the mouse.</sys:String>
   <sys:String x:Key="HelpLiteralDollarText">Anything written as $...$ in the template body is inserted literally, including both dollar signs. No variable expansion is performed.</sys:String>
   <sys:String x:Key="HelpExportText">When exporting a template ZIP, each Context is written to a separate XML file. Template applicability information is retained in the &lt;context&gt; element.</sys:String>
   <sys:String x:Key="ToolbarDragTooltip">Drag the toolbar</sys:String>
   <sys:String x:Key="ToolbarManager">Manager</sys:String>
   <sys:String x:Key="ToolbarManagerTooltip">Open the Code Snippet manager</sys:String>
-  <sys:String x:Key="ToolbarCloseTooltip">Close the toolbar</sys:String>
   <sys:String x:Key="StatusLoading">Loading templates…</sys:String>
   <sys:String x:Key="StatusLanguageChanged">The UI language has been changed to English.</sys:String>
   <sys:String x:Key="StatusAllContexts">The IME now uses all Contexts.</sys:String>

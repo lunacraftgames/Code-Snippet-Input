@@ -1,0 +1,43 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CodeSnippetInput — Windows 代码片段输入法">
+  <title>{% block title %}CodeSnippetInput{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'portal/site.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{% url 'portal:csi_home' %}">
+      <span class="brand-icon">C</span>
+      <span>CodeSnippetInput</span>
+    </a>
+    <nav aria-label="主导航">
+      <a href="{% url 'portal:csi_home' %}">项目</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'portal:template_list' %}">我的模板</a>
+        <form action="{% url 'portal:logout' %}" method="post" class="inline-form">
+          {% csrf_token %}<button class="link-button" type="submit">退出</button>
+        </form>
+      {% else %}
+        <a href="{% url 'portal:login' %}">登录</a>
+        {% if registration_enabled %}<a class="nav-primary" href="{% url 'portal:signup' %}">注册</a>{% endif %}
+      {% endif %}
+    </nav>
+  </header>
+
+  {% if messages %}
+    <div class="messages" aria-live="polite">
+      {% for message in messages %}<div class="message {{ message.tags }}">{{ message }}</div>{% endfor %}
+    </div>
+  {% endif %}
+
+  <main>{% block content %}{% endblock %}</main>
+  <footer class="site-footer">
+    <span>© {% now "Y" %} LunaCraft Games</span>
+    <a href="{% url 'portal:home' %}">返回主页</a>
+  </footer>
+</body>
+</html>

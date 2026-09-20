@@ -1,7 +1,7 @@
 <Window x:Class="CodeSnippetInput.ToolbarWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="{DynamicResource ToolbarTitle}" Width="390" Height="56"
+        Title="{DynamicResource ToolbarTitle}" Width="350" Height="56"
         Icon="Assets/CodeSnippetInput.ico"
         WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" Background="Transparent"
         Topmost="True" ShowInTaskbar="False" Opacity="0" Loaded="Window_Loaded" Closed="Window_Closed">
@@ -15,7 +15,6 @@
         <ColumnDefinition Width="Auto" />
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="Auto" />
-        <ColumnDefinition Width="Auto" />
       </Grid.ColumnDefinitions>
 
       <Border Grid.Column="0" Background="#1967D2" CornerRadius="7" Margin="0,0,8,0"
@@ -25,10 +24,8 @@
       <TextBlock Grid.Column="1" Text="Context" VerticalAlignment="Center" Foreground="#4A5568" Margin="0,0,7,0" />
       <ComboBox x:Name="ContextCombo" Grid.Column="2" MinWidth="150" VerticalContentAlignment="Center"
                 SelectionChanged="ContextCombo_SelectionChanged" />
-      <Button Grid.Column="3" Content="{DynamicResource ToolbarManager}" Click="OpenManager_Click" Margin="8,0,4,0" Padding="10,5"
+      <Button Grid.Column="3" Content="{DynamicResource ToolbarManager}" Click="OpenManager_Click" Margin="8,0,0,0" Padding="10,5"
               ToolTip="{DynamicResource ToolbarManagerTooltip}" />
-      <Button Grid.Column="4" Content="×" Click="Close_Click" Margin="0" Padding="8,4"
-              ToolTip="{DynamicResource ToolbarCloseTooltip}" />
     </Grid>
   </Border>
 </Window>

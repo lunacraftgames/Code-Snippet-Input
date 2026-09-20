@@ -1,0 +1,9 @@
+你好：
+
+请打开下面的链接，验证你的 Code Snippet Input 账号：
+
+{{ verify_url }}
+
+如果这不是你的操作，可以忽略本邮件。
+
+LunaCraft Games

@@ -13,6 +13,7 @@ namespace
 {
 constexpr ULONG_PTR kInjectedInputMarker = 0x4353494D; // "CSIM"
 constexpr wchar_t kCandidateWindowClass[] = L"CodeSnippetInput.CandidateWindow";
+constexpr wchar_t kToolbarMutexName[] = L"Local\\CodeSnippetInput.Toolbar";
 constexpr size_t kMaximumCandidateCount = 8;
 constexpr UINT WM_CANDIDATE_REPOSITION = WM_APP + 0x341;
 
@@ -128,8 +129,11 @@ std::wstring LoadActiveContext()
 
 void EnsureToolbarProcess()
 {
-    static std::atomic<bool> attempted{ false };
-    if (attempted.exchange(true)) return;
+    if (HANDLE existingToolbar = OpenMutexW(SYNCHRONIZE, FALSE, kToolbarMutexName); existingToolbar != nullptr)
+    {
+        CloseHandle(existingToolbar);
+        return;
+    }
 
     std::array<wchar_t, 32768> modulePath{};
     const DWORD length = GetModuleFileNameW(g_module, modulePath.data(), static_cast<DWORD>(modulePath.size()));
@@ -1021,7 +1025,7 @@ bool TextService::HandleCandidateKey(MSG* message)
         return true;
     }
 
-    if (message->wParam == VK_TAB || message->wParam == VK_RETURN || message->wParam == VK_SPACE)
+    if (message->wParam == VK_TAB)
     {
         const size_t selected = selectedCandidate_;
         consume();

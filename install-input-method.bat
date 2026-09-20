@@ -3,7 +3,7 @@ setlocal
 
 set "PROJECT_ROOT=%~dp0"
 set "INSTALL_SCRIPT=%PROJECT_ROOT%CodeSnippetInputTsf\install-input-method.ps1"
-set "TSF_DLL=%PROJECT_ROOT%publish\tsf-x64-literal\CodeSnippetInputTsf.dll"
+set "TSF_DLL=%PROJECT_ROOT%publish\tsf-x64\CodeSnippetInputTsf.dll"
 
 if not exist "%INSTALL_SCRIPT%" (
     echo ERROR: Installer script was not found:

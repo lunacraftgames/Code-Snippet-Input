@@ -1,0 +1,29 @@
+services:
+  web:
+    build:
+      context: .
+    container_name: csi-web
+    restart: unless-stopped
+    env_file:
+      - .env
+    expose:
+      - "8000"
+    ports:
+      - "127.0.0.1:18080:8000"
+    volumes:
+      - ./data:/app/data
+      - ./release:/app/release:ro
+    networks:
+      - 1panel-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; request=urllib.request.Request('http://127.0.0.1:8000/healthz/', headers={'Host':'lunacraftgames.fyi','X-Forwarded-Proto':'https'}); urllib.request.urlopen(request, timeout=4)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  1panel-network:
+    external: true
