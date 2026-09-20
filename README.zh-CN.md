@@ -176,6 +176,26 @@ $END$
 
 Windows 会在程序启动时加载输入法 DLL，因此仅关闭命令行窗口不能释放旧 DLL。
 
+## 从源码生成便携安装包
+
+项目根目录提供两个打包入口：
+
+- 双击 `build-portable-package.bat`，适合在文件资源管理器中使用。
+- 在 PowerShell 中运行 `powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\build-portable-package.ps1"`。
+
+脚本使用自身所在目录作为项目根目录，因此不要求先切换工作目录。它会自动构建 Windows x64 输入法 DLL、发布自包含的管理器、复制安装脚本和文档，并在验证 ZIP 内关键文件的哈希后更新：
+
+```text
+releases\CodeSnippetInput-Portable-win-x64.zip
+```
+
+打包环境需要：
+
+- .NET 8 SDK。
+- Visual Studio 2022 Build Tools，其中包含 C++ 编译工具、CMake 和 Windows SDK。
+
+`releases` 中的发布包默认被 `.gitignore` 排除。建议将生成的 ZIP 上传到 GitHub Releases 或网站下载区，而不是提交到 Git 仓库。
+
 ## 卸载
 
 1. 双击 `uninstall-input-method.bat`。

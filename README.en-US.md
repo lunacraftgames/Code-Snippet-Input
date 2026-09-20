@@ -137,6 +137,26 @@ The portable package does not contain personal configuration. Use JSON or ZIP ex
 4. Run the new `install-input-method.bat`.
 5. Restart Windows so applications release the old input-method DLL.
 
+## Building the portable package from source
+
+Two packaging entry points are available in the project root:
+
+- Double-click `build-portable-package.bat` when working in File Explorer.
+- In PowerShell, run `powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\build-portable-package.ps1"`.
+
+The script uses its own location as the project root, so the current working directory does not matter. It builds the Windows x64 input-method DLL, publishes the self-contained manager, collects the installer scripts and documentation, verifies hashes for critical files inside the ZIP, and then updates:
+
+```text
+releases\CodeSnippetInput-Portable-win-x64.zip
+```
+
+The packaging environment requires:
+
+- .NET 8 SDK.
+- Visual Studio 2022 Build Tools with the C++ toolchain, CMake, and a Windows SDK.
+
+Release archives under `releases` are excluded by `.gitignore`. Publish the generated ZIP through GitHub Releases or the download website instead of committing it to the Git repository.
+
 ## Uninstallation
 
 1. Double-click `uninstall-input-method.bat`.
