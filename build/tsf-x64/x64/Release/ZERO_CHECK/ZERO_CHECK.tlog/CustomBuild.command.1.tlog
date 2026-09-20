@@ -1,0 +1,10 @@
+^C:\USERS\D11YU\个人文件夹\IT\CODE SNIPPET输入法\BUILD\TSF-X64\CMAKEFILES\3B4854F54E74EA5EE439421C9A6664CE\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/d11yu/个人文件夹/IT/code snippet输入法/CodeSnippetInputTsf" "-BC:/Users/d11yu/个人文件夹/IT/code snippet输入法/build/tsf-x64" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/d11yu/个人文件夹/IT/code snippet输入法/build/tsf-x64/CodeSnippetInputTsf.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

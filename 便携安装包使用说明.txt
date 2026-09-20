@@ -1,0 +1,29 @@
+Code Snippet 输入法（Windows x64）
+=================================
+
+安装
+----
+1. 先完整解压 ZIP；不要直接在压缩包预览窗口中运行。
+2. 将解压后的整个文件夹放到一个长期不移动的位置。
+3. 双击 install-input-method.bat，并在 Windows 管理员确认窗口中选择“是”。
+4. 如果输入法没有立即出现在列表中，请重启 Windows。
+5. 按 Win + 空格，选择“Code Snippet 输入法”。
+
+管理模板
+--------
+- 固定悬浮栏中的“管理器”按钮可以打开模板管理器。
+- 也可以双击 open-manager.bat，或直接运行 publish\manager-context\CodeSnippetInput.exe。
+- 配置保存在当前用户的 %APPDATA%\CodeSnippetInput 目录中，不会写入安装包目录。
+
+卸载
+----
+1. 双击 uninstall-input-method.bat，并允许管理员操作。
+2. 重启 Windows，以释放仍被应用程序加载的输入法 DLL。
+3. 然后可以删除整个解压目录。
+
+注意事项
+--------
+- 本包面向 64 位 Windows 10/11 和 64 位应用程序。
+- 已包含 .NET 桌面运行时，且原生输入法静态链接所需的 C++ 运行库，不需要另行安装开发工具。
+- 输入法注册后不要移动或重命名解压目录；如需移动，请先卸载，再移动并重新安装。
+- Windows SmartScreen 若提示未知发布者，可核对文件来源后选择“更多信息”继续。

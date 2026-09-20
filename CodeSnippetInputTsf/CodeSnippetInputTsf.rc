@@ -1,0 +1,5 @@
+#include <windows.h>
+
+#define IDI_CODESNIPPET_INPUT 101
+
+IDI_CODESNIPPET_INPUT ICON "../CodeSnippetInput/Assets/CodeSnippetInput.ico"

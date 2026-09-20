@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.21)
+project(CodeSnippetInputTsf LANGUAGES CXX RC)
+
+add_library(CodeSnippetInputTsf SHARED TextService.cpp DllExports.cpp CodeSnippetInputTsf.def CodeSnippetInputTsf.rc)
+target_compile_features(CodeSnippetInputTsf PRIVATE cxx_std_20)
+target_compile_definitions(CodeSnippetInputTsf PRIVATE UNICODE _UNICODE WIN32_LEAN_AND_MEAN NOMINMAX)
+target_compile_options(CodeSnippetInputTsf PRIVATE /utf-8)
+target_link_libraries(CodeSnippetInputTsf PRIVATE ole32 uuid advapi32 crypt32 user32 gdi32)
+if(MSVC)
+    set_property(TARGET CodeSnippetInputTsf PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif()
+set_target_properties(CodeSnippetInputTsf PROPERTIES OUTPUT_NAME "CodeSnippetInputTsf")

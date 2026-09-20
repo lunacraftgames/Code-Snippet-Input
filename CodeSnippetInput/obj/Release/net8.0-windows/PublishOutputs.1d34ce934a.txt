@@ -1,0 +1,5 @@
+C:\Users\d11yu\个人文件夹\IT\code snippet输入法\publish\CodeSnippetInput.exe
+C:\Users\d11yu\个人文件夹\IT\code snippet输入法\publish\CodeSnippetInput.dll
+C:\Users\d11yu\个人文件夹\IT\code snippet输入法\publish\CodeSnippetInput.deps.json
+C:\Users\d11yu\个人文件夹\IT\code snippet输入法\publish\CodeSnippetInput.runtimeconfig.json
+C:\Users\d11yu\个人文件夹\IT\code snippet输入法\publish\CodeSnippetInput.pdb

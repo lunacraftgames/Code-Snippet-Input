@@ -1,0 +1,5 @@
+C:\Users\d11yu\个人文件夹\IT\code snippet输入法\publish\manager-live\CodeSnippetInput.exe
+C:\Users\d11yu\个人文件夹\IT\code snippet输入法\publish\manager-live\CodeSnippetInput.dll
+C:\Users\d11yu\个人文件夹\IT\code snippet输入法\publish\manager-live\CodeSnippetInput.deps.json
+C:\Users\d11yu\个人文件夹\IT\code snippet输入法\publish\manager-live\CodeSnippetInput.runtimeconfig.json
+C:\Users\d11yu\个人文件夹\IT\code snippet输入法\publish\manager-live\CodeSnippetInput.pdb
