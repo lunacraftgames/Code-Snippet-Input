@@ -81,14 +81,10 @@ Desktop.ini
 .codex/
 .agents/
 
-# Website deployment secrets and runtime data
-/website/.env
-/website/data/
-/website/release/*
-!/website/release/.gitkeep
+# Website source, deployment secrets, and runtime data are managed separately.
+/website/
 
 # Release archives are published through GitHub Releases, not committed.
-/releases/*
-!/releases/.gitkeep
+/releases/
 
 # Sample archives in /template examples remain eligible for version control.

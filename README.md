@@ -1,8 +1,448 @@
-# CodeSnippetInput
+# Code Snippet Input
 
-请选择文档语言 / Choose a documentation language:
+**Language:** English (default) | [简体中文](#简体中文)
 
-- [简体中文](README.zh-CN.md)
-- [English](README.en-US.md)
+Code Snippet Input is a Windows text input tool for code snippets. It appears in the Windows input-method list and displays matching snippets in a vertical candidate window near the text cursor while you type.
 
-Windows code snippet input method with Context management and IntelliJ IDEA Live Templates XML/ZIP compatibility.
+## Official website and template community
+
+Visit the official project page at [https://lunacraftgames.fyi/csi/](https://lunacraftgames.fyi/csi/). It provides the current Windows package, links to the source repository and GitHub Releases, installation guidance, and project support information.
+
+Registered users can also use the website's template space to upload XML or ZIP template packages, keep a template private or publish it to the community, download public templates, vote, and join nested comment discussions. Comment and reply submissions require an image CAPTCHA. Profiles support a nickname and avatar, with the first character of the nickname used when no image is uploaded.
+
+An account is only required for the online template space. The Windows input method itself runs locally and can be installed and used without registering on the website.
+
+## Features
+
+- Switch to it with `Win + Space`, just like another Windows input method.
+- Show matching snippets in a vertical candidate list as an abbreviation is typed.
+- Provide a draggable, fixed toolbar for changing the active Context and opening the manager.
+- Create, rename, enable, disable, and delete Contexts and templates.
+- Select or clear all templates at once; toggling a Context also toggles every child template.
+- Import and export the application's JSON configuration.
+- Import IntelliJ IDEA Live Templates XML files or ZIP archives.
+- Export one XML file per Context inside a ZIP archive.
+- Switch the manager and toolbar UI between Simplified Chinese and English without restarting.
+- Keep templates and settings in the current Windows user's local profile.
+
+## System requirements
+
+- 64-bit Windows 10 or Windows 11.
+- Administrator permission is required when installing or uninstalling the input method.
+- The portable package includes the required .NET and Visual C++ runtime components.
+
+## Installation
+
+1. Extract `CodeSnippetInput-Portable-win-x64.zip` completely.
+2. Move the extracted folder to a permanent location.
+3. Double-click `install-input-method.bat`.
+4. Select **Yes** in the Windows administrator confirmation dialog.
+5. Press `Win + Space` and select **Code Snippet 输入法**.
+
+Do not run the installer from the ZIP preview. Windows records the absolute path of the input-method DLL, so do not move or rename the extracted folder after installation. To relocate it, uninstall first, move the folder, and install it again.
+
+Restart Windows once if the input method does not immediately appear in the list.
+
+## Opening the manager
+
+Use any of these methods:
+
+- Switch to Code Snippet Input and click **Manager** on the fixed toolbar.
+- Double-click `open-manager.bat` in the installation folder.
+- Run `publish\manager-context\CodeSnippetInput.exe` directly.
+
+## Changing the UI language
+
+Open the manager and use the **UI language** selector in the upper-right corner. The manager and the fixed toolbar update immediately. The selected language is saved for the current Windows user and is restored at the next launch.
+
+The first launch follows the Windows display language: Chinese Windows uses Simplified Chinese; other languages use English.
+
+## Using snippet candidates
+
+1. Press `Win + Space` and switch to Code Snippet Input.
+2. Type the beginning of a template abbreviation in any text input area.
+3. A vertical candidate list appears near the text cursor.
+4. Select a candidate to replace the typed abbreviation with the template body.
+
+| Input | Action |
+| --- | --- |
+| `Up` / `Down` | Move the selection |
+| `1`–`8` | Select a candidate by number |
+| `Tab` | Insert the selected candidate |
+| Left mouse button | Click a candidate to insert it |
+| `Esc` | Close the candidate list |
+
+Up to eight candidates are shown. The list is filtered by the Context selected on the fixed toolbar. **All Contexts** searches all enabled templates.
+
+## Fixed toolbar
+
+The fixed toolbar is visible only while Code Snippet Input is active. It hides automatically when another input method is selected.
+
+Switching back from another input method shows the toolbar automatically. A single-instance guard prevents duplicate toolbars.
+
+- Drag the logo to move the toolbar.
+- Use the Context list to select the active template group.
+- Click **Manager** to open the template manager.
+- The toolbar has no close button. It hides automatically when another input method is selected.
+
+## Managing Contexts and templates
+
+The tree on the left side of the manager shows every Context and its templates.
+
+- Create, rename, enable, disable, or delete a Context.
+- Deleting a non-empty Context also deletes its templates after confirmation.
+- Create, edit, enable, disable, and delete templates.
+- Click **Save** after editing. The manager also attempts to save when it closes.
+
+Each template has a Context, abbreviation, description, body, enabled state, variable metadata, and applicability metadata.
+
+### Literal `$variables$`
+
+The template body is inserted exactly as written. Text enclosed in `$` characters is not evaluated or replaced, and both `$` characters are preserved.
+
+For example:
+
+```text
+const $NAME$ = "$VALUE$";
+$END$
+```
+
+is inserted exactly as shown. This differs from IntelliJ IDEA Live Templates. Values such as `$END$`, `$DATE$`, `$TIME$`, and `$CLIPBOARD$` remain literal.
+
+## Import and export
+
+The manager can:
+
+- Import or export the application's JSON configuration.
+- Import one Live Templates XML file.
+- Import a ZIP archive containing multiple XML files.
+- Export a ZIP archive containing one XML file per Context.
+
+After importing from another tool, verify the Context, duplicate abbreviations, line endings, indentation, and any tool-specific variable expressions. Recognized XML metadata is preserved, but IntelliJ-specific code analysis, macros, automatic imports, and reformatting are not executed.
+
+## Configuration location
+
+Per-user data is stored in:
+
+```text
+%APPDATA%\CodeSnippetInput
+```
+
+Important files:
+
+- `templates.json`: templates and Contexts used by the manager.
+- `templates.tsf`: bridge configuration read by the input-method DLL.
+- `active-context.txt`: the currently selected Context.
+- `ui-language.txt`: the UI language used by the manager and toolbar.
+
+The portable package does not contain personal configuration. Use JSON or ZIP export to create backups.
+
+## Updating
+
+1. Save and close the manager.
+2. End `CodeSnippetInput.exe` in Task Manager only when an old running file must be replaced.
+3. Extract the new version to a permanent folder.
+4. Run the new `install-input-method.bat`.
+5. Restart Windows so applications release the old input-method DLL.
+
+## Building the portable package from source
+
+Two packaging entry points are available in the project root:
+
+- Double-click `build-portable-package.bat` when working in File Explorer.
+- In PowerShell, run `powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\build-portable-package.ps1"`.
+
+The script uses its own location as the project root, so the current working directory does not matter. It builds the Windows x64 input-method DLL, publishes the self-contained manager, collects the installer scripts and documentation, verifies hashes for critical files inside the ZIP, and then updates:
+
+```text
+releases\CodeSnippetInput-Portable-win-x64.zip
+```
+
+The packaging environment requires:
+
+- .NET 8 SDK.
+- Visual Studio 2022 Build Tools with the C++ toolchain, CMake, and a Windows SDK.
+
+Release archives under `releases` are excluded by `.gitignore`. Publish the generated ZIP through GitHub Releases or the download website instead of committing it to the Git repository.
+
+## Uninstallation
+
+1. Double-click `uninstall-input-method.bat`.
+2. Select **Yes** in the administrator confirmation dialog.
+3. Restart Windows.
+4. Delete the installation folder if it is no longer needed.
+
+Uninstallation does not delete `%APPDATA%\CodeSnippetInput`. Back up and remove that folder manually only if the templates and settings are no longer needed.
+
+## Troubleshooting
+
+### The input method is missing from `Win + Space`
+
+Confirm that installation completed successfully and restart Windows. If the installation folder was moved, run its installer again.
+
+### No candidate window appears while typing
+
+Check that Code Snippet Input is active, the template is saved and enabled, the selected Context contains the template, the typed prefix matches the abbreviation, and the target application is 64-bit.
+
+### “DLL in use” or “Access denied”
+
+Browsers, File Explorer, and editors can keep the input-method DLL loaded. Restart Windows before replacing or deleting it.
+
+### Is “global expansion” required?
+
+No. Normal use through the Windows input-method system does not require it. Global expansion is a separate keyboard-hook mode and enabling both can cause duplicate expansion.
+
+## Privacy and network use
+
+The desktop application runs locally, requires no account, and does not upload templates. Template bodies and settings remain in the current Windows user's profile.
+
+---
+
+<a id="简体中文"></a>
+
+# Code Snippet 输入法
+
+**文档语言：** [English](#code-snippet-input) | 简体中文
+
+Code Snippet 输入法是一款适用于 Windows 的代码片段输入工具。它以系统输入法的形式出现在 Windows 输入法列表中，可在浏览器、记事本、编辑器等支持文本输入的程序中，根据用户输入的触发词显示纵向候选列表并插入代码片段。
+
+## 官方网站与模板社区
+
+项目官方网站为 [https://lunacraftgames.fyi/csi/](https://lunacraftgames.fyi/csi/)。网站提供最新版 Windows 安装包、源代码仓库与 GitHub Releases 入口、安装说明和项目赞赏信息。
+
+注册用户还可以使用网站的模板空间：上传 XML 或 ZIP 模板包，将模板设为私有或公开分享，下载其他用户的公共模板，并对模板点赞、点踩和参与多层评论讨论。发表评论或子评论时需要输入图片验证码。个人资料支持自定义昵称和头像；未上传头像时会显示昵称首文字。
+
+账号仅用于在线模板空间。Windows 输入法程序本身完全在本地运行，无需注册网站账号即可安装和使用。
+
+## 主要功能
+
+- 可通过 `Win + 空格` 与其他 Windows 输入法切换。
+- 输入触发词前缀时，在文本光标附近纵向显示匹配的代码片段。
+- 提供可拖动的固定悬浮栏，用于切换 Context 和打开管理器。
+- 使用 Context 对模板进行分组、筛选和管理。
+- 支持新建、修改、启用、停用和删除模板。
+- 支持一键全选或全不选全部模板；切换 Context 复选框会同步切换其全部子模板。
+- 支持新建、重命名和删除 Context。
+- 管理器支持简体中文和 English，并可在界面中即时切换。
+- 支持 JSON 配置的导入和导出。
+- 支持 IntelliJ IDEA Live Templates XML/ZIP 的导入和导出。
+- 导出 ZIP 时，每个 Context 会生成一个独立的 XML 文件。
+- 所有模板和配置均保存在当前 Windows 用户的本地目录中。
+
+## 系统要求
+
+- Windows 10 或 Windows 11，64 位版本。
+- 当前安装包适用于 64 位应用程序。
+- 安装和卸载输入法时需要管理员权限。
+- 不需要另外安装 .NET 或 Visual C++ 运行库，便携安装包已经包含运行所需组件。
+
+## 安装
+
+1. 完整解压 `CodeSnippetInput-Portable-win-x64.zip`。
+2. 将解压后的整个文件夹移动到一个长期保留的位置。
+3. 双击 `install-input-method.bat`。
+4. 在 Windows 管理员确认窗口中选择“是”。
+5. 安装完成后，按 `Win + 空格`，选择“Code Snippet 输入法”。
+
+请勿直接在 ZIP 压缩包预览窗口中运行安装脚本。输入法注册信息会记录 DLL 的绝对路径，因此安装完成后不要移动或重命名解压目录。如需移动，请先卸载，再移动并重新安装。
+
+如果输入法没有立即出现在列表中，请完整重启一次 Windows。
+
+## 打开管理器
+
+可通过以下任一方式打开管理器：
+
+- 切换到 Code Snippet 输入法后，点击固定悬浮栏中的“管理器”。
+- 双击安装目录中的 `open-manager.bat`。
+- 直接运行 `publish\manager-context\CodeSnippetInput.exe`。
+
+## 切换界面语言
+
+打开管理器，在右上角的“界面语言”下拉框中选择“简体中文”或“English”。管理器会立即切换语言，固定悬浮栏也会同步更新；设置会保存到当前 Windows 用户配置中，下次启动时继续使用。
+
+首次启动会跟随 Windows 显示语言：中文系统默认使用简体中文，其他系统默认使用 English。
+
+## 使用代码片段候选
+
+1. 通过 `Win + 空格` 切换到 Code Snippet 输入法。
+2. 在任意文本输入区域键入模板触发词的前缀。
+3. 文本光标附近会出现纵向候选列表。
+4. 选择候选后，已输入的触发词会被模板正文替换。
+
+候选列表支持以下操作：
+
+| 操作 | 功能 |
+| --- | --- |
+| `↑` / `↓` | 移动当前选中项 |
+| `1`–`8` | 直接选择对应序号的候选 |
+| `Tab` | 插入当前候选 |
+| 鼠标左键 | 点击插入候选 |
+| `Esc` | 关闭候选列表 |
+
+候选列表最多显示 8 项，并会根据固定悬浮栏中选中的 Context 进行过滤。选择“全部 Context”时，会搜索所有已启用的模板。
+
+## 固定悬浮栏
+
+固定悬浮栏只会在 Code Snippet 输入法处于活动状态时显示；切换到其他输入法后会自动隐藏。
+
+从其他输入法切换回 Code Snippet 输入法时，悬浮栏会自动重新显示。程序使用单实例机制，因此不会出现多个固定悬浮栏。
+
+- 拖动左侧 Logo 可以移动悬浮栏。
+- Context 下拉框用于选择当前模板分组。
+- “管理器”按钮用于打开模板管理界面。
+- 固定悬浮栏不提供关闭按钮；切换到其他输入法时会自动隐藏。
+
+## 管理 Context
+
+管理器左侧以树状结构显示所有 Context 和其中的模板。
+
+- 点击“新建 Context”可以建立新的分组。
+- 可直接在树中修改 Context 名称。
+- 可使用顶部“删除 Context”按钮或 Context 行内的“删除”按钮进行删除。
+- 删除含有模板的 Context 时，管理器会要求确认；确认后该 Context 中的模板也会一并删除。
+- 可以删除最后一个 Context。没有 Context 时，新建模板会自动创建可用的默认分组。
+- 删除当前正在使用的 Context 后，输入法会自动切换到“全部 Context”。
+
+删除 Context 后会立即写入配置。
+
+## 管理模板
+
+每个模板包含以下主要字段：
+
+- **Context**：模板所属分组。
+- **触发词**：用于匹配候选的短字符串。
+- **说明**：显示在候选列表和管理器中。
+- **模板正文**：选择候选后实际插入的文本。
+- **启用状态**：停用后不会出现在输入法候选中。
+- **变量定义**：为兼容配置导入导出而保留的元数据。
+- **模板适用范围**：导入和导出 XML 时保留的范围信息。
+
+修改完成后点击“保存”。关闭管理器时也会尝试自动保存。
+
+### 关于 `$变量$`
+
+模板正文中的所有内容都会逐字输出。任何使用 `$` 包围的内容都会连同两侧的 `$` 符号一起保留，不执行变量替换。
+
+例如模板正文：
+
+```text
+const $NAME$ = "$VALUE$";
+$END$
+```
+
+实际插入结果仍然是：
+
+```text
+const $NAME$ = "$VALUE$";
+$END$
+```
+
+这与 IntelliJ IDEA Live Templates 的变量展开行为不同。`$END$`、`$DATE$`、`$TIME$`、`$CLIPBOARD$` 等内容也会原样输出。
+
+## 导入和导出
+
+管理器支持：
+
+- 导入或导出本工具使用的 JSON 配置。
+- 导入单个 Live Templates XML 文件。
+- 导入包含多个 XML 文件的 ZIP。
+- 按 Context 导出 ZIP；每个 Context 对应一个 XML 文件。
+
+从其他工具导入模板后，建议检查以下内容：
+
+- Context 是否正确。
+- 触发词是否有重名。
+- 模板正文的换行和缩进是否符合预期。
+- 原工具中的变量、宏、格式化表达式是否需要手动调整。
+
+本工具会保留 XML 中能够识别的变量和适用范围元数据，但不会执行 IntelliJ 专用的代码分析、宏表达式、自动导包或重格式化功能。
+
+## 配置文件位置
+
+用户配置保存在：
+
+```text
+%APPDATA%\CodeSnippetInput
+```
+
+主要文件包括：
+
+- `templates.json`：管理器使用的模板和 Context 配置。
+- `templates.tsf`：输入法 DLL 使用的桥接配置。
+- `active-context.txt`：当前选择的 Context。
+- `ui-language.txt`：管理器和固定悬浮栏使用的界面语言。
+
+便携安装包不包含个人配置。建议定期通过管理器导出 JSON 或 ZIP 作为备份。
+
+## 更新版本
+
+推荐按以下方式更新：
+
+1. 保存并关闭管理器。
+2. 在任务管理器中结束 `CodeSnippetInput.exe`（仅在替换正在使用的旧版文件时需要）。
+3. 解压新版本到一个固定目录。
+4. 运行新版本的 `install-input-method.bat`。
+5. 完整重启 Windows，使已经加载旧 DLL 的程序释放旧版本。
+
+Windows 会在程序启动时加载输入法 DLL，因此仅关闭命令行窗口不能释放旧 DLL。
+
+## 从源码生成便携安装包
+
+项目根目录提供两个打包入口：
+
+- 双击 `build-portable-package.bat`，适合在文件资源管理器中使用。
+- 在 PowerShell 中运行 `powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\build-portable-package.ps1"`。
+
+脚本使用自身所在目录作为项目根目录，因此不要求先切换工作目录。它会自动构建 Windows x64 输入法 DLL、发布自包含的管理器、复制安装脚本和文档，并在验证 ZIP 内关键文件的哈希后更新：
+
+```text
+releases\CodeSnippetInput-Portable-win-x64.zip
+```
+
+打包环境需要：
+
+- .NET 8 SDK。
+- Visual Studio 2022 Build Tools，其中包含 C++ 编译工具、CMake 和 Windows SDK。
+
+`releases` 中的发布包默认被 `.gitignore` 排除。建议将生成的 ZIP 上传到 GitHub Releases 或网站下载区，而不是提交到 Git 仓库。
+
+## 卸载
+
+1. 双击 `uninstall-input-method.bat`。
+2. 在管理员确认窗口中选择“是”。
+3. 完整重启 Windows。
+4. 重启后可以删除整个安装目录。
+
+卸载脚本不会删除 `%APPDATA%\CodeSnippetInput` 中的个人模板。若确认不再需要这些配置，可以在卸载并备份后手动删除该目录。
+
+## 常见问题
+
+### 输入法没有出现在 `Win + 空格` 菜单中
+
+确认安装脚本已经成功完成，并完整重启 Windows。如果安装目录在安装后被移动，请重新运行该目录中的安装脚本。
+
+### 切换到其他输入法后悬浮栏消失了
+
+这是正常行为。固定悬浮栏只在 Code Snippet 输入法活动时显示。
+
+### 输入时没有出现候选列表
+
+请检查：
+
+- 当前是否已切换到 Code Snippet 输入法。
+- 模板是否已经保存并处于启用状态。
+- 固定悬浮栏中选择的 Context 是否包含该模板。
+- 输入的字符是否与模板触发词前缀一致。
+- 当前程序是否为 64 位程序。
+
+### 出现“DLL 正在使用”或“拒绝访问”
+
+Windows 中的浏览器、资源管理器和编辑器可能已经加载输入法 DLL。完整重启 Windows 后再进行清理、替换或删除。
+
+### 是否需要启用管理器中的“全局展开”
+
+正常使用系统输入法版本时不需要启用。该功能是独立的全局键盘钩子模式，同时启用可能导致重复展开。
+
+## 隐私与网络
+
+当前桌面程序在本地运行，不要求注册账号，也不会自动上传模板。模板正文和配置保存在当前 Windows 用户的本地配置目录中。

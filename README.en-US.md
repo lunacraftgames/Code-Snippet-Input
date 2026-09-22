@@ -4,6 +4,14 @@
 
 Code Snippet Input is a Windows text input tool for code snippets. It appears in the Windows input-method list and displays matching snippets in a vertical candidate window near the text cursor while you type.
 
+## Official website and template community
+
+Visit the official project page at [https://lunacraftgames.fyi/csi/](https://lunacraftgames.fyi/csi/). It provides the current Windows package, links to the source repository and GitHub Releases, installation guidance, and project support information.
+
+Registered users can also use the website's template space to upload XML or ZIP template packages, keep a template private or publish it to the community, download public templates, vote, and join nested comment discussions. Comment and reply submissions require an image CAPTCHA. Profiles support a nickname and avatar, with the first character of the nickname used when no image is uploaded.
+
+An account is only required for the online template space. The Windows input method itself runs locally and can be installed and used without registering on the website.
+
 ## Features
 
 - Switch to it with `Win + Space`, just like another Windows input method.
