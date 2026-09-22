@@ -1,5 +1,0 @@
-Django>=5.2,<5.3
-gunicorn>=23,<24
-psycopg[binary]>=3.2,<3.3
-whitenoise>=6.9,<7
-defusedxml>=0.7,<0.8

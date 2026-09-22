@@ -1,3 +1,0 @@
-{% extends "portal/base.html" %}
-{% block title %}检查邮箱 · CodeSnippetInput{% endblock %}
-{% block content %}<section class="state-card"><div class="state-icon">✉</div><h1>请检查邮箱</h1><p>验证链接已发送到 <strong>{{ email }}</strong>。点击邮件中的链接后即可登录。</p><a class="button secondary" href="{% url 'portal:csi_home' %}">返回项目页</a></section>{% endblock %}
