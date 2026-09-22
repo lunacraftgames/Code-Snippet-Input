@@ -13,6 +13,8 @@
   <sys:String x:Key="ButtonNewTemplate">New template</sys:String>
   <sys:String x:Key="ButtonDeleteTemplate">Delete template</sys:String>
   <sys:String x:Key="ButtonSave">Save</sys:String>
+  <sys:String x:Key="ButtonOfficialWebsite">Official website</sys:String>
+  <sys:String x:Key="TooltipOfficialWebsite">Open https://lunacraftgames.fyi/csi/ in the default browser</sys:String>
   <sys:String x:Key="ButtonImportJson">Import config JSON</sys:String>
   <sys:String x:Key="ButtonImportTemplates">Import template ZIP/XML</sys:String>
   <sys:String x:Key="ButtonExportJson">Export config JSON</sys:String>
@@ -44,6 +46,8 @@
   <sys:String x:Key="ToolbarManagerTooltip">Open the Code Snippet manager</sys:String>
   <sys:String x:Key="StatusLoading">Loading templates…</sys:String>
   <sys:String x:Key="StatusLanguageChanged">The UI language has been changed to English.</sys:String>
+  <sys:String x:Key="StatusWebsiteOpened">Opened the official website in the default browser.</sys:String>
+  <sys:String x:Key="ErrorOpenWebsite">Could not open the official website: {0}</sys:String>
   <sys:String x:Key="StatusAllContexts">The IME now uses all Contexts.</sys:String>
   <sys:String x:Key="StatusContextChanged">The IME Context is now: {0}</sys:String>
   <sys:String x:Key="StatusLoaded">Loaded {0} templates in {1} Contexts.</sys:String>

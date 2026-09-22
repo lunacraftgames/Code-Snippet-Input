@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Win32;
@@ -10,6 +11,8 @@ namespace CodeSnippetInput;
 
 public partial class MainWindow : Window, INotifyPropertyChanged
 {
+    private const string OfficialWebsiteUrl = "https://lunacraftgames.fyi/csi/";
+
     public static string AllContextsDisplay => LocalizationService.Get("AllContexts");
 
     private readonly TemplateStore _store = new();
@@ -119,6 +122,21 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         RebuildContextGroups();
         UpdateExpansionButtonContent();
         StatusText = L("StatusLanguageChanged");
+    }
+
+    private void OpenWebsite_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            Process.Start(new ProcessStartInfo(OfficialWebsiteUrl) { UseShellExecute = true });
+            StatusText = L("StatusWebsiteOpened");
+        }
+        catch (Exception exception)
+        {
+            var message = LF("ErrorOpenWebsite", exception.Message);
+            StatusText = message;
+            MessageBox.Show(message, L("MainWindowTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 
     private async void Window_Loaded(object sender, RoutedEventArgs e)

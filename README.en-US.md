@@ -51,6 +51,8 @@ Use any of these methods:
 - Double-click `open-manager.bat` in the installation folder.
 - Run `publish\manager-context\CodeSnippetInput.exe` directly.
 
+Click **Official website** in the manager's top action bar to open [https://lunacraftgames.fyi/csi/](https://lunacraftgames.fyi/csi/) in the Windows default browser.
+
 ## Changing the UI language
 
 Open the manager and use the **UI language** selector in the upper-right corner. The manager and the fixed toolbar update immediately. The selected language is saved for the current Windows user and is restored at the next launch.

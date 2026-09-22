@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CodeSnippetInput")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0bb78dedfb547a8531c19ebe8809c286672c6e1e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a9e1c3f1b14a1c00f94ce94e5c5c37563ac1673")]
 [assembly: System.Reflection.AssemblyProductAttribute("CodeSnippetInput")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CodeSnippetInput")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -51,6 +51,8 @@ Use any of these methods:
 - Double-click `open-manager.bat` in the installation folder.
 - Run `publish\manager-context\CodeSnippetInput.exe` directly.
 
+Click **Official website** in the manager's top action bar to open [https://lunacraftgames.fyi/csi/](https://lunacraftgames.fyi/csi/) in the Windows default browser.
+
 ## Changing the UI language
 
 Open the manager and use the **UI language** selector in the upper-right corner. The manager and the fixed toolbar update immediately. The selected language is saved for the current Windows user and is restored at the next launch.
@@ -255,6 +257,8 @@ Code Snippet 输入法是一款适用于 Windows 的代码片段输入工具。�
 - 切换到 Code Snippet 输入法后，点击固定悬浮栏中的“管理器”。
 - 双击安装目录中的 `open-manager.bat`。
 - 直接运行 `publish\manager-context\CodeSnippetInput.exe`。
+
+点击管理器顶部操作栏中的“官方网站”，可以使用 Windows 默认浏览器打开 [https://lunacraftgames.fyi/csi/](https://lunacraftgames.fyi/csi/)。
 
 ## 切换界面语言
 

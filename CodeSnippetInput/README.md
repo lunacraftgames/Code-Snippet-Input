@@ -5,6 +5,7 @@
 ## 已实现
 
 - WPF 模板管理界面：用树状结构显示 Context 与模板；Context 可新建、删除、内联改名，模板也可自定义所属 Context。
+- 管理器顶部提供官方网站入口，使用 Windows 默认浏览器打开 `https://lunacraftgames.fyi/csi/`。
 - 全局展开：例如输入 `fori` 后按 `Tab`，会删除触发词并注入模板；全局监听默认关闭，需在界面显式启用。
 - 模板正文逐字输出：任何 `$...$` 内容都会保留两侧的 `$` 符号，不执行变量替换。
 - JSON 配置自动保存至 `%APPDATA%\CodeSnippetInput\templates.json`，可导入、导出。

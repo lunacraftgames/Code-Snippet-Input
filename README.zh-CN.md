@@ -54,6 +54,8 @@ Code Snippet 输入法是一款适用于 Windows 的代码片段输入工具。�
 - 双击安装目录中的 `open-manager.bat`。
 - 直接运行 `publish\manager-context\CodeSnippetInput.exe`。
 
+点击管理器顶部操作栏中的“官方网站”，可以使用 Windows 默认浏览器打开 [https://lunacraftgames.fyi/csi/](https://lunacraftgames.fyi/csi/)。
+
 ## 切换界面语言
 
 打开管理器，在右上角的“界面语言”下拉框中选择“简体中文”或“English”。管理器会立即切换语言，固定悬浮栏也会同步更新；设置会保存到当前 Windows 用户配置中，下次启动时继续使用。

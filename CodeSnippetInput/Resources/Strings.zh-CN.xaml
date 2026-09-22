@@ -13,6 +13,8 @@
   <sys:String x:Key="ButtonNewTemplate">新建模板</sys:String>
   <sys:String x:Key="ButtonDeleteTemplate">删除模板</sys:String>
   <sys:String x:Key="ButtonSave">保存</sys:String>
+  <sys:String x:Key="ButtonOfficialWebsite">官方网站</sys:String>
+  <sys:String x:Key="TooltipOfficialWebsite">使用默认浏览器打开 https://lunacraftgames.fyi/csi/</sys:String>
   <sys:String x:Key="ButtonImportJson">导入配置 JSON</sys:String>
   <sys:String x:Key="ButtonImportTemplates">导入模板 ZIP/XML</sys:String>
   <sys:String x:Key="ButtonExportJson">导出配置 JSON</sys:String>
@@ -44,6 +46,8 @@
   <sys:String x:Key="ToolbarManagerTooltip">打开 Code Snippet 管理器</sys:String>
   <sys:String x:Key="StatusLoading">正在加载模板…</sys:String>
   <sys:String x:Key="StatusLanguageChanged">界面语言已切换为简体中文。</sys:String>
+  <sys:String x:Key="StatusWebsiteOpened">已使用默认浏览器打开官方网站。</sys:String>
+  <sys:String x:Key="ErrorOpenWebsite">无法打开官方网站：{0}</sys:String>
   <sys:String x:Key="StatusAllContexts">输入法已切换到全部 Context。</sys:String>
   <sys:String x:Key="StatusContextChanged">输入法已切换到 Context：{0}</sys:String>
   <sys:String x:Key="StatusLoaded">已加载 {0} 个模板，分属 {1} 个 Context。</sys:String>

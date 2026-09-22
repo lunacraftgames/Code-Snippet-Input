@@ -20,6 +20,8 @@
         <Button Click="AddTemplate_Click" Content="{DynamicResource ButtonNewTemplate}" />
         <Button Click="DeleteTemplate_Click" Content="{DynamicResource ButtonDeleteTemplate}" />
         <Button Click="Save_Click" Content="{DynamicResource ButtonSave}" />
+        <Button Click="OpenWebsite_Click" Content="{DynamicResource ButtonOfficialWebsite}"
+                ToolTip="{DynamicResource TooltipOfficialWebsite}" />
       </WrapPanel>
       <DockPanel>
         <WrapPanel DockPanel.Dock="Left">
