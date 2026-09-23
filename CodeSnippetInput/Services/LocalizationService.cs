@@ -7,16 +7,26 @@ public sealed record UiLanguageOption(string Code, string DisplayName);
 
 public static class LocalizationService
 {
-    private const string Chinese = "zh-CN";
     private const string English = "en-US";
+    private const string SimplifiedChinese = "zh-CN";
+    private const string TraditionalChinese = "zh-TW";
 
     public static IReadOnlyList<UiLanguageOption> SupportedLanguages { get; } =
     [
-        new(Chinese, "简体中文"),
-        new(English, "English")
+        new(English, "English"),
+        new("es-MX", "Español (México)"),
+        new("fr-FR", "Français"),
+        new("de-DE", "Deutsch"),
+        new("it-IT", "Italiano"),
+        new("pt-BR", "Português (Brasil)"),
+        new(SimplifiedChinese, "简体中文"),
+        new(TraditionalChinese, "繁體中文"),
+        new("ja-JP", "日本語"),
+        new("ko-KR", "한국어"),
+        new("vi-VN", "Tiếng Việt")
     ];
 
-    public static string CurrentLanguage { get; private set; } = Chinese;
+    public static string CurrentLanguage { get; private set; } = English;
     public static event EventHandler? LanguageChanged;
 
     private static string SettingsPath => Path.Combine(
@@ -25,9 +35,7 @@ public static class LocalizationService
 
     public static void Initialize()
     {
-        var fallback = CultureInfo.CurrentUICulture.Name.StartsWith("zh", StringComparison.OrdinalIgnoreCase)
-            ? Chinese
-            : English;
+        var fallback = MatchSystemLanguage(CultureInfo.CurrentUICulture);
         var language = fallback;
         try
         {
@@ -57,6 +65,12 @@ public static class LocalizationService
 
     public static void SetLanguage(string? language, bool persist = true)
     {
+        language = language?.Trim() switch
+        {
+            "es-ES" => "es-MX",
+            "pt-PT" => "pt-BR",
+            var value => value
+        };
         var normalized = SupportedLanguages.Any(item => string.Equals(item.Code, language, StringComparison.OrdinalIgnoreCase))
             ? SupportedLanguages.First(item => string.Equals(item.Code, language, StringComparison.OrdinalIgnoreCase)).Code
             : English;
@@ -89,6 +103,38 @@ public static class LocalizationService
 
     public static string Format(string key, params object[] arguments) =>
         string.Format(CultureInfo.CurrentUICulture, Get(key), arguments);
+
+    private static string MatchSystemLanguage(CultureInfo culture)
+    {
+        var name = culture.Name;
+        var exact = SupportedLanguages.FirstOrDefault(
+            item => string.Equals(item.Code, name, StringComparison.OrdinalIgnoreCase));
+        if (exact is not null) return exact.Code;
+
+        if (name.StartsWith("zh", StringComparison.OrdinalIgnoreCase))
+        {
+            return name.Contains("Hant", StringComparison.OrdinalIgnoreCase)
+                   || name.Contains("-TW", StringComparison.OrdinalIgnoreCase)
+                   || name.Contains("-HK", StringComparison.OrdinalIgnoreCase)
+                   || name.Contains("-MO", StringComparison.OrdinalIgnoreCase)
+                ? TraditionalChinese
+                : SimplifiedChinese;
+        }
+
+        return culture.TwoLetterISOLanguageName.ToLowerInvariant() switch
+        {
+            "en" => English,
+            "es" => "es-MX",
+            "fr" => "fr-FR",
+            "de" => "de-DE",
+            "it" => "it-IT",
+            "pt" => "pt-BR",
+            "ja" => "ja-JP",
+            "ko" => "ko-KR",
+            "vi" => "vi-VN",
+            _ => English
+        };
+    }
 
     private static void SaveLanguage(string language)
     {

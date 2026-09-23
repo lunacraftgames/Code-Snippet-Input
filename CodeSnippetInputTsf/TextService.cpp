@@ -68,6 +68,14 @@ std::wstring ActiveContextPath()
     return std::wstring(appData.data(), length) + L"\\CodeSnippetInput\\active-context.txt";
 }
 
+std::wstring UiLanguagePath()
+{
+    std::array<wchar_t, 32768> appData{};
+    const DWORD length = GetEnvironmentVariableW(L"APPDATA", appData.data(), static_cast<DWORD>(appData.size()));
+    if (length == 0 || length >= appData.size()) return L"";
+    return std::wstring(appData.data(), length) + L"\\CodeSnippetInput\\ui-language.txt";
+}
+
 std::wstring InputMethodStatePath()
 {
     std::array<wchar_t, 32768> appData{};
@@ -114,6 +122,52 @@ std::wstring Utf8ToWide(const std::string& value)
     if (!result.empty() && result.front() == 0xFEFF) result.erase(result.begin());
     while (!result.empty() && (result.back() == L'\r' || result.back() == L'\n' || iswspace(result.back()))) result.pop_back();
     return result;
+}
+
+struct CandidateLabels
+{
+    std::wstring windowTitle = L"Code Snippet candidates";
+    std::wstring header = L"Code snippets";
+    std::wstring allContexts = L"All";
+    std::wstring exampleForLoop = L"Integer-index for loop";
+};
+
+CandidateLabels LoadCandidateLabels()
+{
+    std::wstring language = L"en-US";
+    const auto path = UiLanguagePath();
+    if (!path.empty())
+    {
+        std::ifstream input(std::filesystem::path(path), std::ios::binary);
+        if (input)
+        {
+            const std::string text((std::istreambuf_iterator<char>(input)), std::istreambuf_iterator<char>());
+            const auto loaded = Utf8ToWide(text);
+            if (!loaded.empty()) language = loaded;
+        }
+    }
+
+    if (_wcsicmp(language.c_str(), L"es-MX") == 0 || _wcsicmp(language.c_str(), L"es-ES") == 0)
+        return { L"Candidatos de fragmentos de código", L"Fragmentos de código", L"Todos", L"Bucle for con índice entero" };
+    if (_wcsicmp(language.c_str(), L"fr-FR") == 0)
+        return { L"Suggestions d’extraits de code", L"Extraits de code", L"Tous", L"Boucle for avec indice entier" };
+    if (_wcsicmp(language.c_str(), L"de-DE") == 0)
+        return { L"Codebaustein-Vorschläge", L"Codebausteine", L"Alle", L"For-Schleife mit ganzzahligem Index" };
+    if (_wcsicmp(language.c_str(), L"it-IT") == 0)
+        return { L"Suggerimenti di frammenti di codice", L"Frammenti di codice", L"Tutti", L"Ciclo for con indice intero" };
+    if (_wcsicmp(language.c_str(), L"pt-BR") == 0 || _wcsicmp(language.c_str(), L"pt-PT") == 0)
+        return { L"Sugestões de trechos de código", L"Trechos de código", L"Todos", L"Laço for com índice inteiro" };
+    if (_wcsicmp(language.c_str(), L"zh-CN") == 0)
+        return { L"代码片段候选", L"代码片段", L"全部", L"整数索引 for 循环" };
+    if (_wcsicmp(language.c_str(), L"zh-TW") == 0)
+        return { L"程式碼片段候選", L"程式碼片段", L"全部", L"整數索引 for 迴圈" };
+    if (_wcsicmp(language.c_str(), L"ja-JP") == 0)
+        return { L"コードスニペット候補", L"コードスニペット", L"すべて", L"整数インデックスの for ループ" };
+    if (_wcsicmp(language.c_str(), L"ko-KR") == 0)
+        return { L"코드 조각 후보", L"코드 조각", L"전체", L"정수 인덱스 for 루프" };
+    if (_wcsicmp(language.c_str(), L"vi-VN") == 0)
+        return { L"Gợi ý đoạn mã", L"Đoạn mã", L"Tất cả", L"Vòng lặp for với chỉ số nguyên" };
+    return {};
 }
 
 std::wstring LoadActiveContext()
@@ -419,6 +473,8 @@ public:
     void Show()
     {
         if (!EnsureWindow()) return;
+        labels_ = LoadCandidateLabels();
+        SetWindowTextW(window_, labels_.windowTitle.c_str());
         hasTsfAnchor_ = false;
         UpdateMetrics();
         Reposition();
@@ -498,7 +554,7 @@ private:
         window_ = CreateWindowExW(
             WS_EX_TOOLWINDOW | WS_EX_TOPMOST | WS_EX_NOACTIVATE,
             kCandidateWindowClass,
-            L"Code Snippet 候选",
+            L"Code Snippet candidates",
             WS_POPUP,
             0, 0, 0, 0,
             nullptr,
@@ -579,8 +635,8 @@ private:
         SetBkMode(buffer, TRANSPARENT);
         SetTextColor(buffer, RGB(80, 91, 108));
         RECT headerText{ Scale(14), 0, client.right - Scale(14), headerHeight_ };
-        const std::wstring contextLabel = owner_->activeContext_ == L"*" ? L"全部" : owner_->activeContext_;
-        DrawString(buffer, L"代码片段  ·  " + contextLabel + L"  ·  " + owner_->typedAbbreviation_, headerText,
+        const std::wstring contextLabel = owner_->activeContext_ == L"*" ? labels_.allContexts : owner_->activeContext_;
+        DrawString(buffer, labels_.header + L"  ·  " + contextLabel + L"  ·  " + owner_->typedAbbreviation_, headerText,
             DT_SINGLELINE | DT_VCENTER | DT_END_ELLIPSIS);
 
         for (size_t index = 0; index < owner_->currentCandidates_.size(); ++index)
@@ -658,6 +714,7 @@ private:
     int headerHeight_ = 38;
     int rowHeight_ = 58;
     int windowWidth_ = 480;
+    CandidateLabels labels_{};
     int windowHeight_ = 0;
     RECT tsfAnchor_{};
     bool hasTsfAnchor_ = false;
@@ -764,7 +821,7 @@ std::vector<SnippetTemplate> LoadSnippetTemplates()
     if (!templates.empty()) return templates;
     SnippetTemplate fallback;
     fallback.abbreviation = L"fori";
-    fallback.description = L"整数索引 for 循环";
+    fallback.description = LoadCandidateLabels().exampleForLoop;
     fallback.context = L"General";
     fallback.body = L"for (int i = 0; i < length; i++)\r\n{\r\n    $END$\r\n}";
     templates.emplace_back(std::move(fallback));

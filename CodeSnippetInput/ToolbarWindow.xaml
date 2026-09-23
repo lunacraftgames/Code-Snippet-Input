@@ -21,7 +21,7 @@
               MouseLeftButtonDown="DragHandle_MouseLeftButtonDown" ToolTip="{DynamicResource ToolbarDragTooltip}">
         <Image Source="Assets/CodeSnippetInput.png" Width="30" Height="30" Stretch="Uniform" />
       </Border>
-      <TextBlock Grid.Column="1" Text="Context" VerticalAlignment="Center" Foreground="#4A5568" Margin="0,0,7,0" />
+      <TextBlock Grid.Column="1" Text="{DynamicResource ToolbarContext}" VerticalAlignment="Center" Foreground="#4A5568" Margin="0,0,7,0" />
       <ComboBox x:Name="ContextCombo" Grid.Column="2" MinWidth="150" VerticalContentAlignment="Center"
                 SelectionChanged="ContextCombo_SelectionChanged" />
       <Button Grid.Column="3" Content="{DynamicResource ToolbarManager}" Click="OpenManager_Click" Margin="8,0,0,0" Padding="10,5"

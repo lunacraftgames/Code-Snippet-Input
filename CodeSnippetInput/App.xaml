@@ -5,7 +5,7 @@
   <Application.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Resources/Strings.zh-CN.xaml" />
+        <ResourceDictionary Source="Resources/Strings.en-US.xaml" />
       </ResourceDictionary.MergedDictionaries>
       <Style TargetType="Button">
         <Setter Property="Margin" Value="0,0,8,0" />

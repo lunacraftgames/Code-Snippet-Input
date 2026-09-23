@@ -57,7 +57,9 @@ Click **Official website** in the manager's top action bar to open [https://luna
 
 Open the manager and use the **UI language** selector in the upper-right corner. The manager and the fixed toolbar update immediately. The selected language is saved for the current Windows user and is restored at the next launch.
 
-The first launch follows the Windows display language: Chinese Windows uses Simplified Chinese; other languages use English.
+Available UI languages: English, Mexican Spanish, French, German, Italian, Brazilian Portuguese, Simplified Chinese, Traditional Chinese, Japanese, Korean, and Vietnamese.
+
+On first launch, the app automatically matches the Windows display language across all supported languages. Regional variants are matched by language when an exact locale is unavailable: Spanish variants use Mexican Spanish, Portuguese variants use Brazilian Portuguese, Traditional Chinese variants use Traditional Chinese, and other Chinese variants use Simplified Chinese. If no supported language matches, the app uses English. A language selected manually is saved and takes precedence on later launches.
 
 ## Using snippet candidates
 

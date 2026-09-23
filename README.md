@@ -57,7 +57,9 @@ Click **Official website** in the manager's top action bar to open [https://luna
 
 Open the manager and use the **UI language** selector in the upper-right corner. The manager and the fixed toolbar update immediately. The selected language is saved for the current Windows user and is restored at the next launch.
 
-The first launch follows the Windows display language: Chinese Windows uses Simplified Chinese; other languages use English.
+Available UI languages: English, Mexican Spanish, French, German, Italian, Brazilian Portuguese, Simplified Chinese, Traditional Chinese, Japanese, Korean, and Vietnamese.
+
+On first launch, the app automatically matches the Windows display language across all supported languages. Regional variants are matched by language when an exact locale is unavailable: Spanish variants use Mexican Spanish, Portuguese variants use Brazilian Portuguese, Traditional Chinese variants use Traditional Chinese, and other Chinese variants use Simplified Chinese. If no supported language matches, the app uses English. A language selected manually is saved and takes precedence on later launches.
 
 ## Using snippet candidates
 
@@ -225,7 +227,7 @@ Code Snippet 输入法是一款适用于 Windows 的代码片段输入工具。�
 - 支持新建、修改、启用、停用和删除模板。
 - 支持一键全选或全不选全部模板；切换 Context 复选框会同步切换其全部子模板。
 - 支持新建、重命名和删除 Context。
-- 管理器支持简体中文和 English，并可在界面中即时切换。
+- 管理器支持英文、墨西哥西班牙语、法语、德语、意大利语、巴西葡萄牙语、简体中文、繁体中文、日语、韩语和越南语，并可在界面中即时切换。
 - 支持 JSON 配置的导入和导出。
 - 支持 IntelliJ IDEA Live Templates XML/ZIP 的导入和导出。
 - 导出 ZIP 时，每个 Context 会生成一个独立的 XML 文件。
@@ -262,9 +264,11 @@ Code Snippet 输入法是一款适用于 Windows 的代码片段输入工具。�
 
 ## 切换界面语言
 
-打开管理器，在右上角的“界面语言”下拉框中选择“简体中文”或“English”。管理器会立即切换语言，固定悬浮栏也会同步更新；设置会保存到当前 Windows 用户配置中，下次启动时继续使用。
+打开管理器，在右上角的“界面语言”下拉框中选择语言。管理器会立即切换语言，固定悬浮栏也会同步更新；设置会保存到当前 Windows 用户配置中，下次启动时继续使用。
 
-首次启动会跟随 Windows 显示语言：中文系统默认使用简体中文，其他系统默认使用 English。
+可选语言包括：English、Español (México)、Français、Deutsch、Italiano、Português (Brasil)、简体中文、繁體中文、日本語、한국어和 Tiếng Việt。
+
+首次启动时，程序会针对全部受支持语言自动匹配 Windows 显示语言。如果没有完全相同的地区版本，则按语言匹配：各地区西班牙语映射为墨西哥西班牙语，各地区葡萄牙语映射为巴西葡萄牙语，繁体中文地区使用繁体中文，其他中文地区使用简体中文；无法匹配时默认使用 English。用户手动选择语言后会保存设置，并在以后启动时优先使用该设置。
 
 ## 使用代码片段候选
 

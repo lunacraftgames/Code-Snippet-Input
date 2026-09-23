@@ -14,7 +14,7 @@ inline const CLSID CLSID_CodeSnippetInputTextService =
 inline const GUID GUID_Profile_CodeSnippetInput =
     { 0xd7a40e04, 0x3fd1, 0x4c93, { 0xb1, 0xab, 0xa5, 0x58, 0xec, 0x42, 0x63, 0xea } };
 inline constexpr LANGID kCodeSnippetLangId = MAKELANGID(LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED);
-inline constexpr wchar_t kProfileDescription[] = L"Code Snippet 输入法";
+inline constexpr wchar_t kProfileDescription[] = L"Code Snippet Input";
 
 struct SnippetTemplate
 {
